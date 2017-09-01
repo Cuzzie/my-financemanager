@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, ElementRef, OnInit, ViewChild} from '@angular/core';
 import {Transaction} from "../transaction.model";
+import {TransactionService} from "../transaction.service";
 
 @Component({
   selector: 'app-transaction-input',
@@ -9,12 +10,14 @@ import {Transaction} from "../transaction.model";
 export class TransactionInputComponent implements OnInit {
   newTransaction: Transaction = new Transaction("", "", 0);
 
-  constructor() { }
+  constructor(private transactionService: TransactionService) {
+  }
 
   ngOnInit() {
   }
 
   onSubmitTransaction() {
-
+    this.transactionService.addTransaction(this.newTransaction);
+    this.newTransaction = new Transaction("", "", 0);
   }
 }

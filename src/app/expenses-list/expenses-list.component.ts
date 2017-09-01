@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
+import {Transaction} from "../transaction.model";
 
 @Component({
   selector: 'app-expenses-list',
@@ -6,6 +7,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./expenses-list.component.css']
 })
 export class ExpensesListComponent implements OnInit {
+  @Input() expenses: Transaction[];
 
   constructor() { }
 

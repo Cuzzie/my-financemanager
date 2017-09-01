@@ -7,6 +7,7 @@ import { IncomeListComponent } from './income-list/income-list.component';
 import { ExpensesListComponent } from './expenses-list/expenses-list.component';
 import {FormsModule} from "@angular/forms";
 import {HttpModule} from "@angular/http";
+import {TransactionService} from "./transaction.service";
 
 @NgModule({
   declarations: [
@@ -20,7 +21,7 @@ import {HttpModule} from "@angular/http";
     FormsModule,
     HttpModule
   ],
-  providers: [],
+  providers: [TransactionService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

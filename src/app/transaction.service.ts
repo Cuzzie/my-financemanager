@@ -4,7 +4,7 @@ import {EventEmitter} from "@angular/core";
 export class TransactionService {
   private incomes: Transaction[] = [];
   private expenses: Transaction[] = [];
-  transactionAdded = new EventEmitter<Transaction[]>();
+  transactionAdded = new EventEmitter<string>();
 
   getIncomes(): Transaction[] {
     return this.incomes.slice();
@@ -14,13 +14,13 @@ export class TransactionService {
     return this.expenses.slice();
   }
 
-  addTransaction(transaction: Transaction) {
+   addTransaction(transaction: Transaction) {
     if (transaction.type === "income") {
       this.incomes = [transaction, ...this.incomes];
-      this.transactionAdded.emit(this.incomes.slice());
+      this.transactionAdded.emit("income");
     } else {
       this.expenses = [transaction, ...this.expenses];
-      this.transactionAdded.emit(this.expenses.slice());
+      this.transactionAdded.emit("expenses");
     }
   }
 }
